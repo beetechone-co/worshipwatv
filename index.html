@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorshipWATV</title>
+    <title>WorshipWATV-DLCT</title>
     
     <!-- CÀI ĐẶT ICON CHO ỨNG DỤNG -->
     <link rel="icon" type="image/webp" href="worship.webp">
@@ -33,7 +33,7 @@
     <div id="login-screen" class="min-h-screen flex items-center justify-center bg-blue-50 p-4">
         <div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full text-center border-t-4 border-blue-600">
             <img src="worship.webp" alt="WorshipWATV Logo" class="w-28 h-28 mx-auto mb-4 rounded-2xl shadow-md object-cover">
-            <h2 class="text-2xl font-black text-blue-900 mb-2">WorshipWATV</h2>
+            <h2 class="text-2xl font-black text-blue-900 mb-2">Worship-DLCT</h2>
             <p class="text-gray-500 mb-6 text-sm">Vui lòng nhập mật khẩu để vào ứng dụng</p>
             
             <input type="password" id="password-input" placeholder="Mật khẩu..." class="w-full p-4 border-2 border-gray-200 rounded-xl mb-4 text-center text-xl font-bold focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
@@ -60,9 +60,7 @@
             <button id="btn-sabat" onclick="chuyenBuoi('sabat')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">✨ Tối Sabat</button>
         </div>
 
-        <!-- ========================================== -->
         <!-- GIAO DIỆN CỦA BUỔI MAI & BUỔI TỐI (8 BƯỚC) -->
-        <!-- ========================================== -->
         <div id="container-mai-toi">
             <h1 id="tieu-de-chinh" class="text-2xl md:text-3xl font-black text-center text-red-700 mb-8 mt-4 uppercase">
                 CHƯƠNG TRÌNH THỜ PHƯỢNG
@@ -154,9 +152,7 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
         <!-- GIAO DIỆN CỦA T3 TS (10 BƯỚC) -->
-        <!-- ========================================== -->
         <div id="container-t3ts" class="hidden">
             <h1 class="text-2xl md:text-3xl font-black text-center text-indigo-700 mb-8 mt-4 uppercase">
                 LỄ THỜ PHƯỢNG T3 TINH SẠCH
@@ -379,7 +375,7 @@
                     Ư-ri-đư rưn A-Mu chun-bi-đô Op-Xa-ô-Nhi<br>
                     A-bo-chi-yo U-ri-rưl Bul-xang-hi Yo-ki-si-kô<br>
                     A-bo-chi-ê xơng-nhơng-ư-rô mal-mi-a-ma U-ri-rưl Ko-đưp-na-kê ha sa<br>
-                    A-bo-chi kang-nhim-ha-sil Na-rưn Bu-chôc-ha-mi op xi<br>
+                    A-bo-chi kang-nhim-ha-sil Na-rê Bu-chôc-ha-mi op xi<br>
                     Yơng-chop-ha-kê ha-yo chu-ôp-sô-so.<br>
                     Kư ri sư đô An Xang Hông Nhim I-rư-mư-rô<br>
                     Kan-ku-ha-ôp-na-i-đa, Amen!
@@ -408,64 +404,66 @@
         const danhSachBaiHat = [
             { soHieu: "001", ten: "Ngày Thật Tôn Quý Phước Lành!", ytIndex: 0 },
             { soHieu: "002", ten: "Phước Lành Của Ngày Sabát", ytIndex: 1 },
-            { soHieu: "005", ten: "Con Đường Bộ Hành Không Nơi Định Sẵn", ytIndex: 2 },
-            { soHieu: "006", ten: "Ngày Chí Thánh Đức Chúa Trời Ban!", ytIndex: 3 },
-            { soHieu: "049", ten: "Nước Sự Sống Mẹ Trên Trời Ban Phát", ytIndex: 4 },
-            { soHieu: "056", ten: "Hãy Hát Xướng Bằng Bài Ca Mới", ytIndex: 5 },
-            { soHieu: "057", ten: "Tình Yêu Thương Đã Bị Ấn Giấu Trải Qua Các Kiếp", ytIndex: 6 },
-            { soHieu: "058", ten: "Bằng Môi Miếng Bé Mọn", ytIndex: 7 },
-            { soHieu: "062", ten: "Sự Lành Phước Đức Chúa Trời Mẹ Ban Cho", ytIndex: 8 },
-            { soHieu: "066", ten: "Tôi Yêu Mến Giêrusalem Mẹ", ytIndex: 9 },
-            { soHieu: "067", ten: "Ngài Đi Tìm Con Cái Đã Bị Mất", ytIndex: 10 },
-            { soHieu: "069", ten: "Quê Hương Vĩnh Viễn Chúng Ta Cùng Trở Về", ytIndex: 11 },
-            { soHieu: "073", ten: "Lạy Thưa Cha, Chính Ngài Yêu Thương Chúng Con Biết Bao!", ytIndex: 12 },
-            { soHieu: "076", ten: "Đức Chúa Trời Cha An Xang Hồng Chí Thánh", ytIndex: 13 },
-            { soHieu: "077", ten: "Bởi Sự Khôn Ngoan Đức Chúa Trời", ytIndex: 14 },
-            { soHieu: "083", ten: "Khi Chúng Tôi Sống Trong Đời Này", ytIndex: 15 },
-            { soHieu: "085", ten: "Đức Chúa Trời Là Đấng Chăn Giữ Linh Hồn Tôi", ytIndex: 16 },
-            { soHieu: "086", ten: "Tội Lỗi Lớn Tây Trời Của Chúng Con", ytIndex: 17 },
-            { soHieu: "090", ten: "Bằng Lòng Cảm Tạ Chúng Con Bước Vào Siôn", ytIndex: 18 },
-            { soHieu: "091", ten: "Thật Là Phước Lành Nhiều Biết Bao!", ytIndex: 19 },
-            { soHieu: "095", ten: "Niềm Vui Lớn Này Trào Dâng Ra Như Suối Nước", ytIndex: 20 },
-            { soHieu: "098", ten: "Tấm Lòng Chúng Con Đầy Dẫy Những Gì?", ytIndex: 21 },
-            { soHieu: "106", ten: "Yêu Mến Điều Răn Của Đức Chúa Trời Hơn Cả Vàng Ròng", ytIndex: 22 },
-            { soHieu: "111", ten: "Phước Cho Người Nào", ytIndex: 23 },
-            { soHieu: "115", ten: "Việc Dựng Nên Đền Thánh Của Mẹ", ytIndex: 24 },
-            { soHieu: "139", ten: "Giọng Đức Chúa Trời Mẹ", ytIndex: 25 },
-            { soHieu: "141", ten: "Giêrusalem, Nguồn Nước Sự Sống", ytIndex: 26 },
-            { soHieu: "144", ten: "Niềm Trông Mong Tôi, Cùng Sự Sống Tôi", ytIndex: 27 },
-            { soHieu: "148", ten: "Luật Lệ Của Đức Chúa Trời Là Trọn Vẹn", ytIndex: 28 },
-            { soHieu: "157", ten: "Tôi Đây Giống Như Cây Bá Hương", ytIndex: 29 },
-            { soHieu: "164", ten: "Hôm Nay Tôi Cũng Đi Đến Siôn", ytIndex: 30 },
-            { soHieu: "174", ten: "Đức Chúa Trời Mẹ Là Đường Đi Là Lẽ Thật", ytIndex: 31 },
-            { soHieu: "175", ten: "Lòng Như Ruộng Hoang Cằn Cỗi Cứng Cỏi", ytIndex: 32 },
-            { soHieu: "176", ten: "Đức Chúa Trời Phán Với Ápraham", ytIndex: 33 },
-            { soHieu: "183", ten: "Đường Về Quê Hương Lúc Hoàng Hôn", ytIndex: 34 },
-            { soHieu: "191", ten: "Trong Tấm Lòng Tôi Tưởng Tượng Ra", ytIndex: 35 },
-            { soHieu: "212", ten: "Tấm Lòng Của Con Duy Chỉ", ytIndex: 36 },
-            { soHieu: "215", ten: "Quê Hương Tôi Hằng Nhớ Thương!", ytIndex: 37 },
-            { soHieu: "221", ten: "Nước Thiên Đàng Ở Trong Tôi", ytIndex: 38 },
-            { soHieu: "224", ten: "Xòe Rộng Đôi Cánh Màu Bạc Tươi Đẹp", ytIndex: 39 },
-            { soHieu: "229", ten: "Tình Yêu Thương Mẹ Ban Cho", ytIndex: 40 },
-            { soHieu: "238", ten: "Đức Chúa Trời Mẹ Giàu Yêu Thương", ytIndex: 41 },
-            { soHieu: "243", ten: "À! Thưa Mẹ Của Chính Con", ytIndex: 42 },
-            { soHieu: "247", ten: "Xin Cha Mẹ Đổ Đầy Ơn Phước!", ytIndex: 43 },
-            { soHieu: "254", ten: "Chúng Tôi Là Anh Em Có Tấm Lòng Đẹp", ytIndex: 44 },
-            { soHieu: "257", ten: "Hầu Việc Anh Em", ytIndex: 45 },
-            { soHieu: "259", ten: "Anh Em Ăn Ở Hòa Thuận Nhau", ytIndex: 46 },
-            { soHieu: "264", ten: "Bởi Được Đức Thánh Linh Cảm Động", ytIndex: 47 },
-            { soHieu: "273", ten: "Thật Tôi Xin Lỗi! Vì Không Hiểu Cho Lòng Vết Thương", ytIndex: 48 },
-            { soHieu: "298", ten: "Từ Bỏ Sau Lưng Vinh Quang Trên Trời", ytIndex: 49 },
-            { soHieu: "308", ten: "A Bo Ji! Dù Con Rất Muốn Gọi Thưa Cha", ytIndex: 50 },
-            { soHieu: "339", ten: "Thánh Linh Đức Chúa Trời Cha Đã Hứa Ban", ytIndex: 51 },
-            { soHieu: "343", ten: "Theo Con Đường Cha An Xang Hồng Đã Đi", ytIndex: 52 },
-            { soHieu: "354", ten: "Phàm Nơi Nào Bàn Chân Chúng Con Bước Đến", ytIndex: 53 },
-            { soHieu: "364", ten: "Xin Ngài Hãy Mở Cửa Trên Trời", ytIndex: 54 },
-            { soHieu: "372", ten: "Thưa Mẹ Chúng Con! Thưa Mẹ!",
-            { soHieu: "374", ten: "Vào Giờ Này Con Nguyện Cầu Khẩn Lên", ytIndex: 55 },
-            { soHieu: "381", ten: "Thưa Mẹ Ơi! Con Hết Lòng Khẩn Thiết", ytIndex: 56 },
-            { soHieu: "384", ten: "Trong Tình Yêu Thương Của Mẹ", ytIndex: 57 }
-        };
+            { soHieu: "003", ten: "Bài Ca Mới số 3", ytIndex: 2 },
+            { soHieu: "004", ten: "Bài Ca Mới số 4", ytIndex: 3 },
+            { soHieu: "005", ten: "Con Đường Bộ Hành Không Nơi Định Sẵn", ytIndex: 4 },
+            { soHieu: "006", ten: "Ngày Chí Thánh Đức Chúa Trời Ban!", ytIndex: 5 },
+            { soHieu: "049", ten: "Nước Sự Sống Mẹ Trên Trời Ban Phát", ytIndex: 6 },
+            { soHieu: "056", ten: "Hãy Hát Xướng Bằng Bài Ca Mới", ytIndex: 7 },
+            { soHieu: "057", ten: "Tình Yêu Thương Đã Bị Ấn Giấu Trải Qua Các Kiếp", ytIndex: 8 },
+            { soHieu: "058", ten: "Bằng Môi Miếng Bé Mọn", ytIndex: 9 },
+            { soHieu: "062", ten: "Sự Lành Phước Đức Chúa Trời Mẹ Ban Cho", ytIndex: 10 },
+            { soHieu: "066", ten: "Tôi Yêu Mến Giêrusalem Mẹ", ytIndex: 11 },
+            { soHieu: "067", ten: "Ngài Đi Tìm Con Cái Đã Bị Mất", ytIndex: 12 },
+            { soHieu: "069", ten: "Quê Hương Vĩnh Viễn Chúng Ta Cùng Trở Về", ytIndex: 13 },
+            { soHieu: "073", ten: "Lạy Thưa Cha, Chính Ngài Yêu Thương Chúng Con Biết Bao!", ytIndex: 14 },
+            { soHieu: "076", ten: "Đức Chúa Trời Cha An Xang Hồng Chí Thánh", ytIndex: 15 },
+            { soHieu: "077", ten: "Bởi Sự Khôn Ngoan Đức Chúa Trời", ytIndex: 16 },
+            { soHieu: "083", ten: "Khi Chúng Tôi Sống Trong Đời Này", ytIndex: 17 },
+            { soHieu: "085", ten: "Đức Chúa Trời Là Đấng Chăn Giữ Linh Hồn Tôi", ytIndex: 18 },
+            { soHieu: "086", ten: "Tội Lỗi Lớn Tây Trời Của Chúng Con", ytIndex: 19 },
+            { soHieu: "090", ten: "Bằng Lòng Cảm Tạ Chúng Con Bước Vào Siôn", ytIndex: 20 },
+            { soHieu: "091", ten: "Thật Là Phước Lành Nhiều Biết Bao!", ytIndex: 21 },
+            { soHieu: "095", ten: "Niềm Vui Lớn Này Trào Dâng Ra Như Suối Nước", ytIndex: 22 },
+            { soHieu: "098", ten: "Tấm Lòng Chúng Con Đầy Dẫy Những Gì?", ytIndex: 23 },
+            { soHieu: "106", ten: "Yêu Mến Điều Răn Của Đức Chúa Trời Hơn Cả Vàng Ròng", ytIndex: 24 },
+            { soHieu: "111", ten: "Phước Cho Người Nào", ytIndex: 25 },
+            { soHieu: "115", ten: "Việc Dựng Nên Đền Thánh Của Mẹ", ytIndex: 26 },
+            { soHieu: "139", ten: "Giọng Đức Chúa Trời Mẹ", ytIndex: 27 },
+            { soHieu: "141", ten: "Giêrusalem, Nguồn Nước Sự Sống", ytIndex: 28 },
+            { soHieu: "144", ten: "Niềm Trông Mong Tôi, Cùng Sự Sống Tôi", ytIndex: 29 },
+            { soHieu: "148", ten: "Luật Lệ Của Đức Chúa Trời Là Trọn Vẹn", ytIndex: 30 },
+            { soHieu: "157", ten: "Tôi Đây Giống Như Cây Bá Hương", ytIndex: 31 },
+            { soHieu: "164", ten: "Hôm Nay Tôi Cũng Đi Đến Siôn", ytIndex: 32 },
+            { soHieu: "174", ten: "Đức Chúa Trời Mẹ Là Đường Đi Là Lẽ Thật", ytIndex: 33 },
+            { soHieu: "175", ten: "Lòng Như Ruộng Hoang Cằn Cỗi Cứng Cỏi", ytIndex: 34 },
+            { soHieu: "176", ten: "Đức Chúa Trời Phán Với Ápraham", ytIndex: 35 },
+            { soHieu: "183", ten: "Đường Về Quê Hương Lúc Hoàng Hôn", ytIndex: 36 },
+            { soHieu: "191", ten: "Trong Tấm Lòng Tôi Tưởng Tượng Ra", ytIndex: 37 },
+            { soHieu: "212", ten: "Tấm Lòng Của Con Duy Chỉ", ytIndex: 38 },
+            { soHieu: "215", ten: "Quê Hương Tôi Hằng Nhớ Thương!", ytIndex: 39 },
+            { soHieu: "221", ten: "Nước Thiên Đàng Ở Trong Tôi", ytIndex: 40 },
+            { soHieu: "224", ten: "Xòe Rộng Đôi Cánh Màu Bạc Tươi Đẹp", ytIndex: 41 },
+            { soHieu: "229", ten: "Tình Yêu Thương Mẹ Ban Cho", ytIndex: 42 },
+            { soHieu: "238", ten: "Đức Chúa Trời Mẹ Giàu Yêu Thương", ytIndex: 43 },
+            { soHieu: "243", ten: "À! Thưa Mẹ Của Chính Con", ytIndex: 44 },
+            { soHieu: "247", ten: "Xin Cha Mẹ Đổ Đầy Ơn Phước!", ytIndex: 45 },
+            { soHieu: "254", ten: "Chúng Tôi Là Anh Em Có Tấm Lòng Đẹp", ytIndex: 46 },
+            { soHieu: "257", ten: "Hầu Việc Anh Em", ytIndex: 47 },
+            { soHieu: "259", ten: "Anh Em Ăn Ở Hòa Thuận Nhau", ytIndex: 48 },
+            { soHieu: "264", ten: "Bởi Được Đức Thánh Linh Cảm Động", ytIndex: 49 },
+            { soHieu: "273", ten: "Thật Tôi Xin Lỗi! Vì Không Hiểu Cho Lòng Vết Thương", ytIndex: 50 },
+            { soHieu: "298", ten: "Từ Bỏ Sau Lưng Vinh Quang Trên Trời", ytIndex: 51 },
+            { soHieu: "308", ten: "A Bo Ji! Dù Con Rất Muốn Gọi Thưa Cha", ytIndex: 52 },
+            { soHieu: "339", ten: "Thánh Linh Đức Chúa Trời Cha Đã Hứa Ban", ytIndex: 53 },
+            { soHieu: "343", ten: "Theo Con Đường Cha An Xang Hồng Đã Đi", ytIndex: 54 },
+            { soHieu: "354", ten: "Phàm Nơi Nào Bàn Chân Chúng Con Bước Đến", ytIndex: 55 },
+            { soHieu: "364", ten: "Xin Ngài Hãy Mở Cửa Trên Trời", ytIndex: 56 },
+            { soHieu: "372", ten: "Thưa Mẹ Chúng Con! Thưa Mẹ!", ytIndex: 57 },
+            { soHieu: "374", ten: "Vào Giờ Này Con Nguyện Cầu Khẩn Lên", ytIndex: 58 },
+            { soHieu: "381", ten: "Thưa Mẹ Ơi! Con Hết Lòng Khẩn Thiết", ytIndex: 59 },
+            { soHieu: "384", ten: "Trong Tình Yêu Thương Của Mẹ", ytIndex: 60 }
+        ];
 
         // ==========================================
         // KHỞI TẠO HIỂN THỊ DANH SÁCH CHUẨN XÁC
@@ -600,7 +598,7 @@
                 document.getElementById('tieu-de-chinh').innerText = duLieu[buoi].tieuDeChinh;
                 document.getElementById('tieude-buoc-1').innerText = duLieu[buoi].gioBước1;
                 document.getElementById('tieude-buoc-2').innerText = duLieu[buoi].gioBước2;
-                document.getElementById('loi-dan-buoc-2').innerText = duLieu[buoi].loiDanBuoc2;
+                document.getElementById('loi-dan-buoc-2').innerText = duLieu[buoi].gioBước2;
                 document.getElementById('loi-dan-buoc-8').innerText = duLieu[buoi].loiDanBuoc8;
 
                 if (buoi === 'mai') {
