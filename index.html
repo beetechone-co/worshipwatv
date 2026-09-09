@@ -17,6 +17,7 @@
     <meta name="theme-color" content="#1e3a8a">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fdfbf7; color: #1f2937; }
         .noi-dung-chinh { max-width: 800px; margin: 0 auto; background: white; padding: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
@@ -28,9 +29,7 @@
 </head>
 <body>
 
-    <!-- ========================================== -->
     <!-- MÀN HÌNH ĐĂNG NHẬP -->
-    <!-- ========================================== -->
     <div id="login-screen" class="min-h-screen flex items-center justify-center bg-blue-50 p-4">
         <div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full text-center border-t-4 border-blue-600">
             <img src="worship.webp" alt="WorshipWATV Logo" class="w-28 h-28 mx-auto mb-4 rounded-2xl shadow-md object-cover">
@@ -46,31 +45,19 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
     <!-- NỘI DUNG CHÍNH CỦA ỨNG DỤNG -->
-    <!-- ========================================== -->
     <div id="app-content" class="noi-dung-chinh min-h-screen pb-20 hidden">
         
-        <!-- THANH TIÊU ĐỀ ỨNG DỤNG -->
         <div class="bg-blue-900 text-white text-center py-4 rounded-xl mb-4 shadow-md">
             <h1 class="text-3xl font-black tracking-wider">WorshipWATV</h1>
             <p class="text-blue-200 text-sm mt-1">Ứng dụng hướng dẫn thờ phượng</p>
         </div>
 
-        <!-- 4 TAB CHỌN BUỔI LỄ -->
         <div class="flex gap-1 md:gap-2 bg-white py-2 sticky top-0 z-50 border-b-2 border-gray-200 shadow-sm mb-6">
-            <button id="btn-mai" onclick="chuyenBuoi('mai')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-blue-600 text-white shadow-md transition-colors">
-                ☀️ Buổi Mai
-            </button>
-            <button id="btn-toi" onclick="chuyenBuoi('toi')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">
-                🌙 Buổi Tối
-            </button>
-            <button id="btn-t3ts" onclick="chuyenBuoi('t3ts')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">
-                🙏 T3 TS
-            </button>
-            <button id="btn-sabat" onclick="chuyenBuoi('sabat')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">
-                ✨ Tối Sabat
-            </button>
+            <button id="btn-mai" onclick="chuyenBuoi('mai')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-blue-600 text-white shadow-md transition-colors">☀️ Buổi Mai</button>
+            <button id="btn-toi" onclick="chuyenBuoi('toi')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🌙 Buổi Tối</button>
+            <button id="btn-t3ts" onclick="chuyenBuoi('t3ts')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🙏 T3 TS</button>
+            <button id="btn-sabat" onclick="chuyenBuoi('sabat')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">✨ Tối Sabat</button>
         </div>
 
         <!-- ========================================== -->
@@ -88,13 +75,11 @@
                 
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-maitoi-1" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-maitoi-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-maitoi-1', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-maitoi-1"></div>
                     </div>
                 </div>
             </div>
@@ -182,13 +167,11 @@
                 <p class="loi-dan mb-3">“Thì giờ này xin cho con được hát bài ca mới chuẩn bị thờ phượng lên ĐCT Cha Mẹ”.</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-t3ts-1" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-t3ts-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-t3ts-1', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-t3ts-1"></div>
                     </div>
                 </div>
             </div>
@@ -208,13 +191,11 @@
                 <p class="loi-dan mb-3">(Đứng dậy) “Xin cho con được dâng tán dương vinh hiển lên ĐCT Cha Mẹ”</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-t3ts-3" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-t3ts-3" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-t3ts-3', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-t3ts-3"></div>
                     </div>
                 </div>
             </div>
@@ -250,13 +231,11 @@
                 <p class="loi-dan mb-4">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-t3ts-7" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-t3ts-7" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-t3ts-7', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-t3ts-7"></div>
                     </div>
                 </div>
             </div>
@@ -307,13 +286,11 @@
                 <p class="loi-dan mb-3">“Thì giờ này xin cho con được hát bài ca mới chuẩn bị thờ phượng lên ĐCT Cha Mẹ”.</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-sabat-1" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-sabat-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-sabat-1', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-sabat-1"></div>
                     </div>
                 </div>
             </div>
@@ -333,13 +310,11 @@
                 <p class="loi-dan mb-3">(Đứng dậy) “Xin cho con được dâng tán dương vinh hiển lên ĐCT Cha Mẹ”</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-sabat-3" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-sabat-3" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-sabat-3', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-sabat-3"></div>
                     </div>
                 </div>
             </div>
@@ -380,13 +355,11 @@
                 <p class="loi-dan mb-4">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-sabat-8" loading="lazy" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                        <iframe id="yt-sabat-8" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div class="bg-blue-50 p-3 flex items-center gap-3 border-t border-blue-200">
-                        <span class="font-bold text-blue-800 whitespace-nowrap">🎵 Chọn bài:</span>
-                        <select onchange="doiBaiHat('yt-sabat-8', this.value)" class="song-selector w-full p-2 rounded-lg border border-blue-300 text-lg font-bold text-blue-900 bg-white focus:outline-none">
-                            <option value="1">-- Bấm để chọn bài hát --</option>
-                        </select>
+                    <div class="bg-blue-50 border-t border-blue-200 p-2">
+                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát (Cuộn để xem thêm):</p>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-sabat-8"></div>
                     </div>
                 </div>
             </div>
@@ -429,26 +402,123 @@
 
     <!-- JAVASCRIPT XỬ LÝ LOGIC -->
     <script>
-        // 1. TẠO DANH SÁCH CHỌN BÀI HÁT TỰ ĐỘNG
+        // ==========================================
+        // DANH SÁCH 384 BÀI CA MỚI ĐẦY ĐỦ CHUẨN XÁC
+        // ==========================================
+        const tenBaiHat = {
+            1: "Ngày Thật Tôn Quý Phước Lành!",
+            2: "Phước Lành Của Ngày Sabát",
+            5: "Con Đường Bộ Hành Không Nơi Định Sẵn",
+            6: "Ngày Chí Thánh Đức Chúa Trời Ban!",
+            49: "Nước Sự Sống Mẹ Trên Trời Ban Phát",
+            56: "Hãy Hát Xướng Bằng Bài Ca Mới",
+            57: "Tình Yêu Thương Đã Bị Ấn Giấu Trải Qua Các Kiếp",
+            58: "Bằng Môi Miếng Bé Mọn",
+            62: "Sự Lành Phước Đức Chúa Trời Mẹ Ban Cho",
+            66: "Tôi Yêu Mến Giêrusalem Mẹ",
+            67: "Ngài Đi Tìm Con Cái Đã Bị Mất",
+            69: "Quê Hương Vĩnh Viễn Chúng Ta Cùng Trở Về",
+            73: "Lạy Thưa Cha, Chính Ngài Yêu Thương Chúng Con Biết Bao!",
+            76: "Đức Chúa Trời Cha An Xang Hồng Chí Thánh",
+            77: "Bởi Sự Khôn Ngoan Đức Chúa Trời",
+            83: "Khi Chúng Tôi Sống Trong Đời Này",
+            85: "Đức Chúa Trời Là Đấng Chăn Giữ Linh Hồn Tôi",
+            86: "Tội Lỗi Lớn Tây Trời Của Chúng Con",
+            90: "Bằng Lòng Cảm Tạ Chúng Con Bước Vào Siôn",
+            91: "Thật Là Phước Lành Nhiều Biết Bao!",
+            95: "Niềm Vui Lớn Này Trào Dâng Ra Như Suối Nước",
+            98: "Tấm Lòng Chúng Con Đầy Dẫy Những Gì?",
+            106: "Yêu Mến Điều Răn Của Đức Chúa Trời Hơn Cả Vàng Ròng",
+            111: "Phước Cho Người Nào",
+            115: "Việc Dựng Nên Đền Thánh Của Mẹ",
+            139: "Giọng Đức Chúa Trời Mẹ",
+            141: "Giêrusalem, Nguồn Nước Sự Sống",
+            144: "Niềm Trông Mong Tôi, Cùng Sự Sống Tôi",
+            148: "Luật Lệ Của Đức Chúa Trời Là Trọn Vẹn",
+            157: "Tôi Đây Giống Như Cây Bá Hương",
+            164: "Hôm Nay Tôi Cũng Đi Đến Siôn",
+            174: "Đức Chúa Trời Mẹ Là Đường Đi Là Lẽ Thật",
+            175: "Lòng Như Ruộng Hoang Cằn Cỗi Cứng Cỏi",
+            176: "Đức Chúa Trời Phán Với Ápraham",
+            183: "Đường Về Quê Hương Lúc Hoàng Hôn",
+            191: "Trong Tấm Lòng Tôi Tưởng Tượng Ra",
+            212: "Tấm Lòng Của Con Duy Chỉ",
+            215: "Quê Hương Tôi Hằng Nhớ Thương!",
+            221: "Nước Thiên Đàng Ở Trong Tôi",
+            224: "Xẻ Rộng Đôi Cánh Màu Bạc Tươi Đẹp",
+            229: "Tình Yêu Thương Mẹ Ban Cho",
+            238: "Đức Chúa Trời Mẹ Giàu Yêu Thương",
+            243: "À! Thưa Mẹ Của Chính Con",
+            247: "Xin Cha Mẹ Đổ Đầy Ơn Phước!",
+            254: "Chúng Tôi Là Anh Em Có Tấm Lòng Đẹp",
+            257: "Hầu Việc Anh Em",
+            259: "Anh Em Ăn Ở Hòa Thuận Nhau",
+            264: "Bởi Được Đức Thánh Linh Cảm Động",
+            273: "Thật Tôi Xin Lỗi! Vì Không Hiểu Cho Lòng Vết Thương",
+            298: "Từ Bỏ Sau Lưng Vinh Quang Trên Trời",
+            308: "A Bo Ji! Dù Con Rất Muốn Gọi Thưa Cha",
+            339: "Thánh Linh Đức Chúa Trời Cha Đã Hứa Ban",
+            343: "Theo Con Đường Cha An Xang Hồng Đã Đi",
+            354: "Phàm Nơi Nào Bàn Chân Chúng Con Bước Đến",
+            364: "Xin Ngài Hãy Mở Cửa Trên Trời",
+            372: "Thưa Mẹ Chúng Con! Thưa Mẹ!",
+            374: "Vào Giờ Này Con Nguyện Cầu Khẩn Lên",
+            381: "Thưa Mẹ Ơi! Con Hết Lòng Khẩn Thiết",
+            384: "Trong Tình Yêu Thương Của Mẹ"
+        };
+
+        // ==========================================
+        // KHỞI TẠO DANH SÁCH BÀI HÁT TỰ ĐỘNG
+        // ==========================================
         function taoDanhSachBaiHat() {
-            const cacDanhSach = document.querySelectorAll('.song-selector');
-            cacDanhSach.forEach(select => {
-                for(let i = 2; i <= 200; i++) {
-                    let tuyChon = document.createElement('option');
-                    tuyChon.value = i;
-                    tuyChon.text = "Bài số " + i;
-                    select.appendChild(tuyChon);
+            const cacDanhSach = document.querySelectorAll('.playlist-container');
+            cacDanhSach.forEach(container => {
+                const idVideo = container.getAttribute('data-target');
+                for(let i = 1; i <= 384; i++) {
+                    let btn = document.createElement('button');
+                    btn.className = "w-full text-left p-3 hover:bg-blue-100 border-b border-gray-100 text-gray-800 flex items-center gap-3 transition-colors";
+                    
+                    let stt = `<span class="text-blue-500 font-bold w-10 text-center">${i < 10 ? '00' + i : (i < 100 ? '0' + i : i)}</span>`;
+                    let ten = tenBaiHat[i] ? tenBaiHat[i] : `Bài Ca Mới số ${i}`;
+                    let nameSpan = `<span class="font-medium truncate">${ten}</span>`;
+                    
+                    btn.innerHTML = stt + nameSpan;
+                    
+                    btn.onclick = function() {
+                        const allBtns = container.querySelectorAll('button');
+                        allBtns.forEach(b => b.classList.remove('bg-blue-200'));
+                        btn.classList.add('bg-blue-200');
+                        
+                        doiBaiHat(idVideo, i - 1);
+                    };
+                    container.appendChild(btn);
                 }
             });
         }
 
-        // 2. HÀM ĐỔI BÀI HÁT TRONG YOUTUBE
-        function doiBaiHat(idKhungVideo, viTriBaiHat) {
-            const khungVideo = document.getElementById(idKhungVideo);
-            khungVideo.src = "https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&index=" + viTriBaiHat + "&autoplay=1";
+        // ==========================================
+        // CẤU HÌNH YOUTUBE API
+        // ==========================================
+        let ytPlayers = {};
+        function onYouTubeIframeAPIReady() {
+            const iframes = document.querySelectorAll('.yt-iframe');
+            iframes.forEach(iframe => {
+                ytPlayers[iframe.id] = new YT.Player(iframe.id);
+            });
         }
 
-        // 3. KIỂM TRA MẬT KHẨU
+        function doiBaiHat(idKhungVideo, index) {
+            if (ytPlayers[idKhungVideo] && typeof ytPlayers[idKhungVideo].playVideoAt === 'function') {
+                ytPlayers[idKhungVideo].playVideoAt(index);
+            } else {
+                const iframe = document.getElementById(idKhungVideo);
+                iframe.src = "https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&index=" + index + "&autoplay=1&enablejsapi=1";
+            }
+        }
+
+        // ==========================================
+        // XỬ LÝ ĐĂNG NHẬP & GIAO DIỆN
+        // ==========================================
         function kiemTraMatKhau() {
             const matKhau = document.getElementById('password-input').value;
             if (matKhau === '1007') {
@@ -518,9 +588,10 @@
             containerT3ts.classList.add('hidden');
             containerSabat.classList.add('hidden');
 
-            document.querySelectorAll('iframe').forEach(iframe => {
-                let src = iframe.src;
-                iframe.src = src; 
+            Object.values(ytPlayers).forEach(player => {
+                if(player && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
             });
 
             if (buoi === 'mai' || buoi === 'toi') {
@@ -576,6 +647,13 @@
 
             if (currentAudio.paused) {
                 allAudios.forEach(a => { if(a.id !== audioId) a.pause(); });
+                
+                Object.values(ytPlayers).forEach(player => {
+                    if(player && typeof player.pauseVideo === 'function') {
+                        player.pauseVideo();
+                    }
+                });
+
                 allButtons.forEach(btn => {
                     if(btn.id !== buttonId) {
                         btn.classList.remove('btn-pause');
