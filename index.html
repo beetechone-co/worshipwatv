@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hỗ Trợ TP </title>
+    <title>WorshipWATV</title>
     
     <!-- CÀI ĐẶT ICON CHO ỨNG DỤNG -->
     <link rel="icon" type="image/webp" href="worship.webp">
@@ -17,7 +17,6 @@
     <meta name="theme-color" content="#1e3a8a">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fdfbf7; color: #1f2937; }
         .noi-dung-chinh { max-width: 800px; margin: 0 auto; background: white; padding: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
@@ -33,12 +32,12 @@
     <div id="login-screen" class="min-h-screen flex items-center justify-center bg-blue-50 p-4">
         <div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full text-center border-t-4 border-blue-600">
             <img src="worship.webp" alt="WorshipWATV Logo" class="w-28 h-28 mx-auto mb-4 rounded-2xl shadow-md object-cover">
-            <h2 class="text-2xl font-black text-blue-900 mb-2">Hỗ Trợ TP </h2>
+            <h2 class="text-2xl font-black text-blue-900 mb-2">Worship-ĐLCT</h2>
             <p class="text-gray-500 mb-6 text-sm">Vui lòng nhập mật khẩu để vào ứng dụng</p>
             
-            <input type="password" id="password-input" placeholder="Mật khẩu..." class="w-full p-4 border-2 border-gray-200 rounded-xl mb-4 text-center text-xl font-bold focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+            <input type="password" id="password-input" inputmode="numeric" placeholder="Mật khẩu..." class="w-full p-4 border-2 border-gray-200 rounded-xl mb-4 text-center text-xl font-bold focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
             
-            <button onclick="kiemTraMatKhau()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors text-lg shadow-lg">
+            <button type="button" id="btn-login" onclick="kiemTraMatKhau()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 active:bg-blue-800 transition-colors text-lg shadow-lg cursor-pointer">
                 Vào Ứng Dụng
             </button>
             <p id="login-error" class="text-red-600 mt-4 font-medium hidden">Mật khẩu không đúng, vui lòng thử lại!</p>
@@ -49,122 +48,31 @@
     <div id="app-content" class="noi-dung-chinh min-h-screen pb-20 hidden">
         
         <div class="bg-blue-900 text-white text-center py-4 rounded-xl mb-4 shadow-md">
-            <h1 class="text-3xl font-black tracking-wider">Hỗ Trợ TP </h1>
+            <h1 class="text-3xl font-black tracking-wider">WorshipWATV</h1>
             <p class="text-blue-200 text-sm mt-1">Ứng dụng hướng dẫn thờ phượng</p>
         </div>
 
-        <div class="flex gap-1 md:gap-2 bg-white py-2 sticky top-0 z-50 border-b-2 border-gray-200 shadow-sm mb-6">
-            <button id="btn-mai" onclick="chuyenBuoi('mai')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-blue-600 text-white shadow-md transition-colors">☀️ Buổi Mai</button>
-            <button id="btn-toi" onclick="chuyenBuoi('toi')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🌙 Buổi Tối</button>
-            <button id="btn-t3ts" onclick="chuyenBuoi('t3ts')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🙏 T3 TS</button>
-            <button id="btn-sabat" onclick="chuyenBuoi('sabat')" class="flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">✨ Tối Sabat</button>
+        <!-- THANH CHUYỂN ĐỔI 4 BUỔI THỜ PHƯỢNG -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-2 bg-white py-2 sticky top-0 z-50 border-b-2 border-gray-200 shadow-sm mb-6">
+            <button type="button" id="btn-t3ts" onclick="chuyenBuoi('t3ts')" class="py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🙏 Tối T3 TS</button>
+            <button type="button" id="btn-sabat-sang" onclick="chuyenBuoi('sabat_sang')" class="py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">☀️ Sáng Sabat</button>
+            <button type="button" id="btn-sabat-chieu" onclick="chuyenBuoi('sabat_chieu')" class="py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">🌤️ Chiều Sabat</button>
+            <button type="button" id="btn-sabat-toi" onclick="chuyenBuoi('sabat_toi')" class="py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors">✨ Tối Sabat</button>
         </div>
 
         <!-- ========================================== -->
-        <!-- GIAO DIỆN CỦA BUỔI MAI & BUỔI TỐI (8 BƯỚC) -->
-        <!-- ========================================== -->
-        <div id="container-mai-toi">
-            <h1 id="tieu-de-chinh" class="text-2xl md:text-3xl font-black text-center text-red-700 mb-8 mt-4 uppercase">
-                CHƯƠNG TRÌNH THỜ PHƯỢNG
-            </h1>
-            
-            <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 id="tieude-buoc-1" class="text-xl font-bold text-buoc mb-3">Bước 1 (khoảng 4h50)</h2>
-                <p class="loi-dan mb-3">“Thì giờ này xin cho con được hát bài ca mới chuẩn bị thờ phượng lên ĐCT Cha Mẹ”.</p>
-                <p class="text-lg text-gray-700 mb-4">🎵 Hát từ 1 đến 3 bài (bật nhạc và nhìn lời nhạc hát theo).</p>
-                
-                <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                    <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-maitoi-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                    <div class="bg-blue-50 border-t border-blue-200 p-2">
-                        <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát trong danh sách:</p>
-                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-maitoi-1"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 id="tieude-buoc-2" class="text-xl font-bold text-buoc mb-3">Bước 2 (đúng 5h00)</h2>
-                <p id="loi-dan-buoc-2" class="loi-dan mb-4 text-justify"></p>
-                <p class="text-lg text-gray-700 mb-4">🙏 Bật nhạc nền cầu nguyện 1 phút và cầu nguyện ngẫm nghĩ trong đầu theo 4 bước cho đến khi kết thúc nhạc.</p>
-                <audio id="audio-buoc-2" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-2" onclick="toggleAudio('audio-buoc-2', 'btn-audio-2')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
-                    <span class="icon">▶</span>
-                    <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
-                </button>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 3</h2>
-                <p class="loi-dan mb-3">(Đứng dậy) “Xin cho con được dâng tán dương vinh hiển lên ĐCT Cha Mẹ”</p>
-                <p class="text-lg text-gray-700">🎵 Hát bài ca mới vinh hiển.</p>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 4: Cầu nguyện khai mạc</h2>
-                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng theo 4 bước (Kêu danh Cha và Mẹ - Cảm tạ - Cầu xin – Nhân danh Cha).</p>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 5</h2>
-                <p class="loi-dan mb-4">“Thì giờ này con xin phép nghe (đọc) lời của ĐCT Cha Mẹ ban cho thông qua lời giảng với chủ đề ….”</p>
-                <p class="text-lg text-gray-700 mb-4">📖 Nghe (đọc) thành tiếng cho hết bài giảng - Đọc sách "HÃY ĐẾN CÙNG THÁNH LINH VÀ VỢ MỚI".</p>
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <p class="text-md text-blue-900"><strong>Website:</strong> <a href="https://vnwatv.org/" target="_blank" class="text-blue-600 underline">https://vnwatv.org/</a></p>
-                    <p class="text-md text-blue-900 mt-1"><strong>ID:</strong> watvvn &nbsp;&nbsp;|&nbsp;&nbsp; <strong>PW:</strong> vn1948ncvn</p>
-                </div>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 6</h2>
-                <p class="loi-dan mb-4">“Từ bây giờ con xin dâng cầu nguyện thống thanh cầu xin Đức Chúa Trời Cha Mẹ ban Thánh Linh xuống cho con”</p>
-                <audio id="audio-buoc-6" src="nhac-thong-thanh.mp3"></audio>
-                <button id="btn-audio-6" onclick="toggleAudio('audio-buoc-6', 'btn-audio-6')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
-                    <span class="icon">▶</span>
-                    <span class="text">Nhạc Cầu Nguyện Thống Thanh</span>
-                </button>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 7</h2>
-                <p class="loi-dan mb-4">“Xin cho con được dâng lên lời cầu nguyện chúng con mong muốn và sau đó là cầu nguyện ngẫm nghĩ”</p>
-                <div class="bg-amber-50 p-4 rounded-lg text-amber-900 font-medium leading-relaxed mb-4 text-center border border-amber-200">
-                    Ha-nư-rê kê-sin A-bo-chi An-Xang-Hông Nhim<br>
-                    A-bo-chi-kê-so Kang-nhim-ha-sil na-rưn Im-băc-ha-yot-sa-ô-na<br>
-                    Ư-ri-đư rưn A-Mu chun-bi-đô Op-Xa-ô-Nhi<br>
-                    A-bo-chi-yo U-ri-rưl Bul-xang-hi Yo-ki-si-kô<br>
-                    A-bo-chi-ê xơng-nhơng-ư-rô mal-mi-a-ma U-ri-rưl Ko-đưp-na-kê ha sa<br>
-                    A-bo-chi kang-nhim-ha-sil Na-rê Bu-chôc-ha-mi op xi<br>
-                    Yơng-chop-ha-kê ha-yo chu-ôp-sô-so.<br>
-                    Kư ri sư đô An Xang Hông Nhim I-rư-mư-rô<br>
-                    Kan-ku-ha-ôp-na-i-đa, Amen!
-                </div>
-                <audio id="audio-buoc-7" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-7" onclick="toggleAudio('audio-buoc-7', 'btn-audio-7')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
-                    <span class="icon">▶</span>
-                    <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
-                </button>
-            </div>
-
-            <div class="mb-4">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 8</h2>
-                <p id="loi-dan-buoc-8" class="loi-dan mb-4 text-justify"></p>
-                <p class="text-lg text-gray-700 font-bold">Kết thúc thờ phượng.</p>
-            </div>
-        </div>
-
-        <!-- ========================================== -->
-        <!-- GIAO DIỆN CỦA T3 TS (10 BƯỚC) -->
+        <!-- GIAO DIỆN CỦA TỐI T3 TINH SẠCH (9 BƯỚC)    -->
         <!-- ========================================== -->
         <div id="container-t3ts" class="hidden">
             <h1 class="text-2xl md:text-3xl font-black text-center text-indigo-700 mb-8 mt-4 uppercase">
-                LỄ THỜ PHƯỢNG T3 TINH SẠCH
+                THỜ PHƯỢNG TỐI T3 TINH SẠCH
             </h1>
             
+            <!-- Bước 1 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 1 (khoảng 19h20)</h2>
                 <p class="loi-dan mb-3">“Thì giờ này xin cho con được hát bài ca mới chuẩn bị thờ phượng lên ĐCT Cha Mẹ”.</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát từ 1 đến 3 bài (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
                         <iframe id="yt-t3ts-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -176,19 +84,23 @@
                 </div>
             </div>
 
+            <!-- Bước 2 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 2 (đúng 19h30)</h2>
                 <p id="loi-dan-buoc-2-t3" class="loi-dan mb-4 text-justify"></p>
+                <p class="text-lg text-gray-700 mb-4">🙏 Bật nhạc nền cầu nguyện 1 phút và cầu nguyện ngẫm nghĩ trong đầu theo 4 bước cho đến khi kết thúc nhạc cầu nguyện.</p>
                 <audio id="audio-buoc-2-t3" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-2-t3" onclick="toggleAudio('audio-buoc-2-t3', 'btn-audio-2-t3')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
+                <button type="button" id="btn-audio-2-t3" onclick="toggleAudio('audio-buoc-2-t3', 'btn-audio-2-t3')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
                     <span class="icon">▶</span>
                     <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
                 </button>
             </div>
 
+            <!-- Bước 3 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 3</h2>
                 <p class="loi-dan mb-3">(Đứng dậy) “Xin cho con được dâng tán dương vinh hiển lên ĐCT Cha Mẹ”</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát bài ca mới vinh hiển (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
                         <iframe id="yt-t3ts-3" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -200,54 +112,52 @@
                 </div>
             </div>
 
+            <!-- Bước 4 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 4: Cầu nguyện khai mạc</h2>
-                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng theo 4 bước.</p>
+                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng theo 4 bước (Kêu danh Cha và Mẹ - Cảm tạ - Cầu xin – Nhân danh Cha).</p>
             </div>
 
+            <!-- Bước 5 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 5</h2>
-                <p class="loi-dan mb-4">“Thì giờ này con xin phép nghe lời của ĐCT Cha Mẹ ban cho thông qua lời giảng với chủ đề ….”</p>
+                <p class="loi-dan mb-4">“Thì giờ này con xin phép nghe lời của ĐCT Cha Mẹ ban cho thông qua lời giảng của mục sư tổng hội trưởng với chủ đề : …"</p>
+                <p class="text-lg text-gray-700 mb-4">📖 Xem hết video giảng đạo của Tổng hội trưởng hoặc đọc chương sách giảng đạo thành tiếng cho hết bài giảng.</p>
                 <div class="bg-indigo-50 p-5 rounded-lg border border-indigo-100">
                     <p class="text-lg font-bold text-indigo-900 mb-3">📺 Xem video bài giảng của THT:</p>
-                    <a href="https://worshipvn.net/vi/home" target="_blank" class="block w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg">
+                    <a href="https://worship1.watv.org/vi/home" target="_blank" class="block w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg">
                         👉 Bấm vào đây để xem Video
                     </a>
                 </div>
             </div>
 
-            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 6</h2>
-                <p class="loi-dan mb-4">“Từ bây giờ con xin dâng cầu nguyện thống thanh cầu xin Đức Chúa Trời Cha Mẹ ban Thánh Linh xuống cho con”</p>
-                <audio id="audio-buoc-6-t3" src="nhac-thong-thanh.mp3"></audio>
-                <button id="btn-audio-6-t3" onclick="toggleAudio('audio-buoc-6-t3', 'btn-audio-6-t3')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
-                    <span class="icon">▶</span>
-                    <span class="text">Nhạc Cầu Nguyện Thống Thanh</span>
-                </button>
-            </div>
-
+            <!-- Bước 6 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 7</h2>
-                <p class="loi-dan mb-4">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 6</h2>
+                <p class="loi-dan mb-3">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát một bài phù hợp theo bài giảng (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-t3ts-7" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe id="yt-t3ts-6" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="bg-blue-50 border-t border-blue-200 p-2">
                         <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát trong danh sách:</p>
-                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-t3ts-7"></div>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-t3ts-6"></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Bước 7 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 8: Cầu nguyện bế mạc</h2>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 7: Cầu nguyện bế mạc</h2>
                 <p class="loi-dan mb-3">“Xin cho con được cầu nguyện bế mạc cho bàn thờ buổi tối T3 tinh sạch hôm nay”</p>
+                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng cảm tạ về lời giảng được ban cho và khấn nguyện với ĐCT.</p>
             </div>
 
+            <!-- Bước 8 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 9</h2>
-                <p class="loi-dan mb-4">“Xin cho con được dâng lên lời cầu nguyện chúng con mong muốn và sau đó là cầu nguyện ngẫm nghĩ”</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 8</h2>
+                <p class="loi-dan mb-4">“Ace hãy cùng dâng lên lời cầu nguyện chúng con mong muốn và sau đó là cầu nguyện ngẫm nghĩ”</p>
                 <div class="bg-amber-50 p-4 rounded-lg text-amber-900 font-medium leading-relaxed mb-4 text-center border border-amber-200">
                     Ha-nư-rê kê-sin A-bo-chi An-Xang-Hông Nhim<br>
                     A-bo-chi-kê-so Kang-nhim-ha-sil na-rưn Im-băc-ha-yot-sa-ô-na<br>
@@ -259,31 +169,35 @@
                     Kư ri sư đô An Xang Hông Nhim I-rư-mư-rô<br>
                     Kan-ku-ha-ôp-na-i-đa, Amen!
                 </div>
-                <audio id="audio-buoc-9-t3" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-9-t3" onclick="toggleAudio('audio-buoc-9-t3', 'btn-audio-9-t3')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
+                <p class="text-lg text-gray-700 mb-4">🙏 Bật nhạc nền cầu nguyện 1 phút và cầu nguyện ngẫm nghĩ trong đầu 4 bước cho đến khi kết thúc nhạc cầu nguyện.</p>
+                <audio id="audio-buoc-8-t3" src="nhac-cau-nguyen.mp3"></audio>
+                <button type="button" id="btn-audio-8-t3" onclick="toggleAudio('audio-buoc-8-t3', 'btn-audio-8-t3')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
                     <span class="icon">▶</span>
                     <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
                 </button>
             </div>
 
+            <!-- Bước 9 -->
             <div class="mb-4">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 10</h2>
-                <p class="loi-dan mb-4 text-justify">“Xin cho con được kết thúc lễ thờ phượng buổi tối thứ 3 tinh sạch và cũng là buổi tối tuần lễ cầu nguyện Lễ Lều Tạm hôm nay tại đây, con xin Cảm Tạ Cha Mẹ!”</p>
-                <p class="text-lg text-gray-700 font-bold">Kết thúc thờ phượng.</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 9</h2>
+                <p class="loi-dan mb-4 text-justify">“Xin cho con được kết thúc lễ thờ phượng buổi thứ 3 tinh sạch hôm nay tại đây, con xin Cảm Tạ Cha Mẹ!”</p>
+                <p class="text-lg text-gray-700 font-bold">Kết thúc thờ phượng tối thứ 3 tinh sạch.</p>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- GIAO DIỆN CỦA TỐI SABAT (11 BƯỚC) -->
-        <!-- ========================================== -->
+        <!-- ======================================================= -->
+        <!-- GIAO DIỆN DÙNG CHUNG CHO 3 BUỔI NGÀY SABAT (10 BƯỚC)    -->
+        <!-- ======================================================= -->
         <div id="container-sabat" class="hidden">
-            <h1 class="text-2xl md:text-3xl font-black text-center text-purple-700 mb-8 mt-4 uppercase">
-                LỄ THỜ PHƯỢNG TỐI SABAT
+            <h1 id="sabat-tieu-de" class="text-2xl md:text-3xl font-black text-center text-purple-700 mb-8 mt-4 uppercase">
+                THỜ PHƯỢNG NGÀY SABAT
             </h1>
             
+            <!-- Bước 1 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 1 (khoảng 19h20)</h2>
+                <h2 id="sabat-tieude-b1" class="text-xl font-bold text-buoc mb-3">Bước 1</h2>
                 <p class="loi-dan mb-3">“Thì giờ này xin cho con được hát bài ca mới chuẩn bị thờ phượng lên ĐCT Cha Mẹ”.</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát từ 1 đến 3 bài (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
                         <iframe id="yt-sabat-1" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -295,19 +209,23 @@
                 </div>
             </div>
 
+            <!-- Bước 2 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 2: Tuyên bố (đúng 19h30)</h2>
-                <p id="loi-dan-buoc-2-sabat" class="loi-dan mb-4 text-justify"></p>
+                <h2 id="sabat-tieude-b2" class="text-xl font-bold text-buoc mb-3">Bước 2: Tuyên bố</h2>
+                <p id="sabat-loidan-b2" class="loi-dan mb-4 text-justify"></p>
+                <p class="text-lg text-gray-700 mb-4">🙏 Bật nhạc nền cầu nguyện 1 phút và cầu nguyện ngẫm nghĩ trong đầu theo 4 bước cho đến khi kết thúc nhạc cầu nguyện.</p>
                 <audio id="audio-buoc-2-sabat" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-2-sabat" onclick="toggleAudio('audio-buoc-2-sabat', 'btn-audio-2-sabat')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
+                <button type="button" id="btn-audio-2-sabat" onclick="toggleAudio('audio-buoc-2-sabat', 'btn-audio-2-sabat')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
                     <span class="icon">▶</span>
                     <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
                 </button>
             </div>
 
+            <!-- Bước 3 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 3</h2>
                 <p class="loi-dan mb-3">(Đứng dậy) “Xin cho con được dâng tán dương vinh hiển lên ĐCT Cha Mẹ”</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát bài ca mới vinh hiển (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
                         <iframe id="yt-sabat-3" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -319,60 +237,59 @@
                 </div>
             </div>
 
+            <!-- Bước 4 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 4: Cầu nguyện khai mạc</h2>
-                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng để khai mạc cho lễ thờ phượng buổi tối (Kêu danh Cha và Mẹ - Cảm tạ - Cầu xin – Nhân danh Cha).</p>
+                <h2 id="sabat-tieude-b4" class="text-xl font-bold text-buoc mb-3">Bước 4: Cầu nguyện khai mạc</h2>
+                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng theo 4 bước (Kêu danh Cha và Mẹ - Cảm tạ - Cầu xin – Nhân danh Cha).</p>
             </div>
 
+            <!-- Bước 5 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
                 <h2 class="text-xl font-bold text-buoc mb-3">Bước 5</h2>
-                <p class="loi-dan mb-4">“Thì giờ này con xin phép nghe lời của ĐCT Cha Mẹ ban cho thông qua lời giảng của mục sư tổng hội trưởng với chủ đề : … ”</p>
+                <p class="loi-dan mb-4">“Thì giờ này con xin phép nghe lời của ĐCT Cha Mẹ ban cho thông qua lời giảng của mục sư tổng hội trưởng với chủ đề : …"</p>
+                <p class="text-lg text-gray-700 mb-4">📖 Xem hết video giảng đạo của Tổng hội trưởng hoặc đọc chương sách giảng đạo thành tiếng cho hết bài giảng.</p>
                 <div class="bg-indigo-50 p-5 rounded-lg border border-indigo-100">
                     <p class="text-lg font-bold text-indigo-900 mb-3">📺 Xem video bài giảng:</p>
-                    <a href="https://worshipvn.net/vi/home" target="_blank" class="block w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg">
+                    <a href="https://worship1.watv.org/vi/home" target="_blank" class="block w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-lg">
                         👉 Bấm vào đây để xem Video
                     </a>
                 </div>
             </div>
 
-            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 6</h2>
-                <p class="loi-dan mb-4">“Từ bây giờ con xin dâng cầu nguyện thống thanh cầu xin Đức Chúa Trời Cha Mẹ ban Thánh Linh xuống cho con”</p>
-                <audio id="audio-buoc-6-sabat" src="nhac-thong-thanh.mp3"></audio>
-                <button id="btn-audio-6-sabat" onclick="toggleAudio('audio-buoc-6-sabat', 'btn-audio-6-sabat')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
-                    <span class="icon">▶</span>
-                    <span class="text">Nhạc Cầu Nguyện Thống Thanh</span>
-                </button>
+            <!-- Bước 6 -->
+            <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 6: Dâng lễ vật</h2>
+                <p id="sabat-loidan-b6" class="loi-dan mb-3"></p>
+                <p class="text-lg text-gray-700 font-medium">✉️ Đặt lễ vật lên đĩa.</p>
             </div>
 
+            <!-- Bước 7 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 7: Dâng lễ vật</h2>
-                <p class="loi-dan mb-3">“Xin cho con được dâng lễ vật Sabat bằng tấm lòng cảm tạ lên ĐCT Cha Mẹ, Nguyện Xin ĐCT Cha Mẹ nhậm lấy lễ vật của con.”</p>
-            </div>
-
-            <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 8</h2>
-                <p class="loi-dan mb-4">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 7</h2>
+                <p class="loi-dan mb-3">“Thì giờ này xin cho con được dâng tán dương bài ca mới cảm tạ về lời giảng của ĐCT Cha Mẹ ban cho”</p>
+                <p class="text-lg text-gray-700 mb-4">🎵 Hát một bài phù hợp theo bài giảng (bật nhạc và nhìn bản nhạc hát theo).</p>
                 <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
                     <div class="relative w-full" style="padding-top: 56.25%;">
-                        <iframe id="yt-sabat-8" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe id="yt-sabat-7" class="yt-iframe absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="bg-blue-50 border-t border-blue-200 p-2">
                         <p class="font-bold text-blue-800 mb-2 px-2">🎵 Chọn bài hát trong danh sách:</p>
-                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-sabat-8"></div>
+                        <div class="h-56 overflow-y-auto bg-white rounded-lg border border-blue-100 playlist-container" data-target="yt-sabat-7"></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Bước 8 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 9: Cầu nguyện bế mạc</h2>
-                <p class="loi-dan mb-3">“Xin cho con được cầu nguyện dâng hiến cho bàn thờ Sabat hôm nay”</p>
-                <p class="text-lg text-gray-700">🙏 Cầu nguyện thành tiếng cảm tạ về lời giảng được ban cho và lễ vật được dâng hiến.</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 8: Cầu nguyện bế mạc</h2>
+                <p id="sabat-loidan-b8" class="loi-dan mb-3"></p>
+                <p class="text-lg text-gray-700">🙏 Cầu nguyện bế mạc (Cầu nguyện thành tiếng cảm tạ về lời giảng được ban cho và lễ vật được dâng hiến).</p>
             </div>
 
+            <!-- Bước 9 -->
             <div class="mb-8 border-b-2 border-gray-100 pb-8 bg-slate-50 p-4 rounded-xl">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 10</h2>
-                <p class="loi-dan mb-4">“Xin cho con được dâng lên lời cầu nguyện chúng con mong muốn và sau đó là cầu nguyện ngẫm nghĩ”</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 9</h2>
+                <p class="loi-dan mb-4">“Ace hãy cùng dâng lên lời cầu nguyện chúng con mong muốn và sau đó là cầu nguyện ngẫm nghĩ”</p>
                 <div class="bg-amber-50 p-4 rounded-lg text-amber-900 font-medium leading-relaxed mb-4 text-center border border-amber-200">
                     Ha-nư-rê kê-sin A-bo-chi An-Xang-Hông Nhim<br>
                     A-bo-chi-kê-so Kang-nhim-ha-sil na-rưn Im-băc-ha-yot-sa-ô-na<br>
@@ -384,17 +301,19 @@
                     Kư ri sư đô An Xang Hông Nhim I-rư-mư-rô<br>
                     Kan-ku-ha-ôp-na-i-đa, Amen!
                 </div>
-                <audio id="audio-buoc-10-sabat" src="nhac-cau-nguyen.mp3"></audio>
-                <button id="btn-audio-10-sabat" onclick="toggleAudio('audio-buoc-10-sabat', 'btn-audio-10-sabat')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
+                <p class="text-lg text-gray-700 mb-4">🙏 Bật nhạc nền cầu nguyện 1 phút và cầu nguyện ngẫm nghĩ trong đầu 4 bước cho đến khi kết thúc nhạc cầu nguyện.</p>
+                <audio id="audio-buoc-9-sabat" src="nhac-cau-nguyen.mp3"></audio>
+                <button type="button" id="btn-audio-9-sabat" onclick="toggleAudio('audio-buoc-9-sabat', 'btn-audio-9-sabat')" class="w-full btn-play p-4 rounded-xl text-lg font-bold flex items-center justify-center gap-3 shadow-md transition-colors">
                     <span class="icon">▶</span>
                     <span class="text">Nhạc Cầu Nguyện Ngẫm Nghĩ</span>
                 </button>
             </div>
 
+            <!-- Bước 10 -->
             <div class="mb-4">
-                <h2 class="text-xl font-bold text-buoc mb-3">Bước 11</h2>
-                <p class="loi-dan mb-4 text-justify">“Xin cho con được kết thúc lễ thờ phượng buổi tối ngày Sabat và cũng là buổi tối tuần lễ cầu nguyện Lễ Lều Tạm hôm nay tại đây, con xin Cảm Tạ Đức Chúa Trời Cha Mẹ!”</p>
-                <p class="text-lg text-gray-700 font-bold">Kết thúc thờ phượng.</p>
+                <h2 class="text-xl font-bold text-buoc mb-3">Bước 10</h2>
+                <p id="sabat-loidan-b10" class="loi-dan mb-4 text-justify"></p>
+                <p id="sabat-ketthuc" class="text-lg text-gray-700 font-bold"></p>
             </div>
         </div>
 
@@ -402,9 +321,45 @@
 
     <!-- JAVASCRIPT XỬ LÝ LOGIC -->
     <script>
-        // ==========================================
-        // DANH SÁCH CHÍNH XÁC THEO SỐ THỨ TỰ BẠN CUNG CẤP
-        // ==========================================
+        // 1. XỬ LÝ ĐĂNG NHẬP ĐỘC LẬP (CHẠY NGAY LẬP TỨC)
+        function kiemTraMatKhau() {
+            const matKhauInput = document.getElementById('password-input');
+            const matKhau = matKhauInput ? matKhauInput.value.trim() : '';
+            
+            if (matKhau === '1007') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('app-content').classList.remove('hidden');
+                try { localStorage.setItem('daDangNhapWorship', 'true'); } catch (e) {}
+                khoiTaoUngDung();
+            } else {
+                const err = document.getElementById('login-error');
+                if (err) err.classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            taoDanhSachBaiHat();
+
+            const passInput = document.getElementById('password-input');
+            if (passInput) {
+                passInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        kiemTraMatKhau();
+                    }
+                });
+            }
+
+            try {
+                if (localStorage.getItem('daDangNhapWorship') === 'true') {
+                    document.getElementById('login-screen').classList.add('hidden');
+                    document.getElementById('app-content').classList.remove('hidden');
+                    khoiTaoUngDung();
+                }
+            } catch (e) {}
+        });
+
+        // 2. DANH SÁCH BÀI CA MỚI YOUTUBE
         const danhSachBaiHat = [
             { hienThi: "001 - Ngày Thật Tôn Quý Phước Lành!", ytIndex: 0 },
             { hienThi: "002 - Phước Lành Của Ngày Sabát", ytIndex: 1 },
@@ -467,24 +422,21 @@
             { hienThi: "384 - Trong Tình Yêu Thương Của Mẹ", ytIndex: 58 }
         ];
 
-        // ==========================================
-        // KHỞI TẠO HIỂN THỊ DANH SÁCH CHUẨN XÁC
-        // ==========================================
         function taoDanhSachBaiHat() {
             const cacDanhSach = document.querySelectorAll('.playlist-container');
             cacDanhSach.forEach(container => {
+                container.innerHTML = '';
                 const idVideo = container.getAttribute('data-target');
-                
                 danhSachBaiHat.forEach(bai => {
                     let btn = document.createElement('button');
-                    btn.className = "w-full text-left p-3 hover:bg-blue-100 border-b border-gray-100 text-gray-800 font-medium transition-colors text-lg";
+                    btn.type = "button";
+                    btn.className = "w-full text-left p-3 hover:bg-blue-100 border-b border-gray-100 text-gray-800 font-medium transition-colors text-base md:text-lg";
                     btn.innerText = bai.hienThi;
                     
                     btn.onclick = function() {
                         const allBtns = container.querySelectorAll('button');
                         allBtns.forEach(b => b.classList.remove('bg-blue-200'));
                         btn.classList.add('bg-blue-200');
-                        
                         doiBaiHat(idVideo, bai.ytIndex);
                     };
                     container.appendChild(btn);
@@ -492,159 +444,154 @@
             });
         }
 
-        // ==========================================
-        // CẤU HÌNH YOUTUBE API
-        // ==========================================
+        // 3. CẤU HÌNH YOUTUBE API (TẢI BẤT ĐỒNG BỘ KHÔNG CHẶN TRANG)
         let ytPlayers = {};
         function onYouTubeIframeAPIReady() {
-            const iframes = document.querySelectorAll('.yt-iframe');
-            iframes.forEach(iframe => {
-                ytPlayers[iframe.id] = new YT.Player(iframe.id);
-            });
+            try {
+                const iframes = document.querySelectorAll('.yt-iframe');
+                iframes.forEach(iframe => {
+                    ytPlayers[iframe.id] = new YT.Player(iframe.id);
+                });
+            } catch (e) {}
         }
 
         function doiBaiHat(idKhungVideo, index) {
-            if (ytPlayers[idKhungVideo] && typeof ytPlayers[idKhungVideo].playVideoAt === 'function') {
-                ytPlayers[idKhungVideo].playVideoAt(index);
-            } else {
-                const iframe = document.getElementById(idKhungVideo);
+            try {
+                if (ytPlayers[idKhungVideo] && typeof ytPlayers[idKhungVideo].playVideoAt === 'function') {
+                    ytPlayers[idKhungVideo].playVideoAt(index);
+                    return;
+                }
+            } catch (e) {}
+            const iframe = document.getElementById(idKhungVideo);
+            if (iframe) {
                 iframe.src = "https://www.youtube.com/embed/videoseries?list=PLqhRWtC0SOP4xO4PrQuZJw0vLaO11rF7s&index=" + index + "&autoplay=1&enablejsapi=1";
             }
         }
 
-        // ==========================================
-        // XỬ LÝ ĐĂNG NHẬP & GIAO DIỆN (An toàn tuyệt đối)
-        // ==========================================
-        function kiemTraMatKhau() {
-            const matKhauInput = document.getElementById('password-input');
-            const matKhau = matKhauInput ? matKhauInput.value.trim() : '';
-            
-            if (matKhau === '1507') {
-                document.getElementById('login-screen').classList.add('hidden');
-                document.getElementById('app-content').classList.remove('hidden');
-                
-                try {
-                    localStorage.setItem('daDangNhapWorship', 'true');
-                } catch (e) {
-                    // Bỏ qua lỗi localStorage trên file://
-                }
-                
-                khoiTaoUngDung();
-            } else {
-                const err = document.getElementById('login-error');
-                if (err) err.classList.remove('hidden');
-            }
-        }
-
-        const passInput = document.getElementById('password-input');
-        if (passInput) {
-            passInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') kiemTraMatKhau();
-            });
-        }
-
-        window.onload = function() {
-            taoDanhSachBaiHat();
-
-            try {
-                if (localStorage.getItem('daDangNhapWorship') === 'true') {
-                    document.getElementById('login-screen').classList.add('hidden');
-                    document.getElementById('app-content').classList.remove('hidden');
-                    khoiTaoUngDung();
-                }
-            } catch (e) {
-                // Bỏ qua lỗi localStorage trên file://
-            }
-        };
-
+        // 4. DỮ LIỆU & LỜI DẪN LỄ CHO 4 BUỔI THỜ PHƯỢNG
         const homNay = new Date();
-        const ngay = homNay.getDate();
-        const thang = homNay.getMonth() + 1;
-        const nam = homNay.getFullYear();
-        const chuoiNgay = `ngày ${ngay} tháng ${thang} năm ${nam}`;
+        const chuoiNgay = `ngày ${homNay.getDate()} tháng ${homNay.getMonth() + 1} năm ${homNay.getFullYear()}`;
 
-        const duLieu = {
-            mai: {
-                tieuDeChinh: "LỄ THỜ PHƯỢNG BUỔI MAI",
-                gioBước1: "Bước 1 (khoảng 4h50)",
-                gioBước2: "Bước 2 (đúng 5h00)",
-                loiDanBuoc2: `“Đã đến giờ hẹn thờ phượng với ĐCT rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi mai tuần lễ cầu nguyện Lễ Lều Tạm ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`,
-                loiDanBuoc8: "“Xin cho con được kết thúc lễ thờ phượng buổi mai tuần lễ cầu nguyện Lễ Lều Tạm hôm nay tại đây, con xin Cảm Tạ Cha Mẹ!”"
+        const duLieuSabat = {
+            sabat_sang: {
+                tieuDe: "THỜ PHƯỢNG NGÀY SABAT - BUỔI SÁNG",
+                mauTieuDe: "text-sky-700",
+                mauNut: "bg-sky-600",
+                b1: "Bước 1 (khoảng 9h50)",
+                b2TieuDe: "Bước 2 (đúng 10h00) Tuyên bố",
+                b2LoiDan: `“Đã đến giờ hẹn thờ phượng với Đức Chúa Trời rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi sáng ngày Sabat ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`,
+                b4TieuDe: "Bước 4: Cầu nguyện thành tiếng để khai mạc cho lễ thờ phượng buổi sáng",
+                b6LoiDan: "“Xin cho con được dâng lễ vật sáng Sa-bát (và lễ vật 1/10 – nếu có) bằng tấm lòng cảm tạ lên Cha Mẹ, Nguyện Xin ĐCT Cha Mẹ nhậm lấy lễ vật của con.”",
+                b8LoiDan: "“Xin cho con được cầu nguyện dâng hiến cho bàn thờ buổi sáng Sabat chí thánh hôm nay”",
+                b10LoiDan: "“Xin cho con được kết thúc lễ thờ phượng buổi sáng Sa-bát chí thánh hôm nay tại đây, con xin Cảm Tạ Đức Chúa Trời Cha Mẹ!”",
+                ketThuc: "Kết thúc thờ phượng buổi sáng ngày Sabat."
             },
-            toi: {
-                tieuDeChinh: "LỄ THỜ PHƯỢNG BUỔI TỐI",
-                gioBước1: "Bước 1 (khoảng 19h20)",
-                gioBước2: "Bước 2 (đúng 19h30)",
-                loiDanBuoc2: `“Đã đến giờ hẹn thờ phượng với ĐCT rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi tối tuần lễ cầu nguyện Lễ Lều Tạm ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`,
-                loiDanBuoc8: "“Xin cho con được kết thúc lễ thờ phượng buổi tối tuần lễ cầu nguyện Lễ Lều Tạm hôm nay tại đây, con xin Cảm Tạ Cha Mẹ!”"
+            sabat_chieu: {
+                tieuDe: "THỜ PHƯỢNG NGÀY SABAT - BUỔI CHIỀU",
+                mauTieuDe: "text-amber-700",
+                mauNut: "bg-amber-600",
+                b1: "Bước 1 (khoảng 14h20)",
+                b2TieuDe: "Bước 2 (đúng 14h30) Tuyên bố",
+                b2LoiDan: `“Đã đến giờ hẹn thờ phượng với Đức Chúa Trời rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi chiều ngày Sabat ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`,
+                b4TieuDe: "Bước 4: Cầu nguyện thành tiếng để khai mạc cho lễ thờ phượng buổi chiều",
+                b6LoiDan: "“Xin cho con được dâng lễ vật buổi chiều Sa-bát (và lễ vật 1/10 – nếu có) bằng tấm lòng cảm tạ lên Cha Mẹ, Nguyện Xin ĐCT Cha Mẹ nhậm lấy lễ vật của con.”",
+                b8LoiDan: "“Xin cho con được cầu nguyện dâng hiến cho bàn thờ buổi chiều Sabat chí thánh hôm nay”",
+                b10LoiDan: "“Xin cho con được kết thúc lễ thờ phượng buổi chiều Sa-bát chí thánh hôm nay tại đây, con xin Cảm Tạ Đức Chúa Trời Cha Mẹ!”",
+                ketThuc: "Kết thúc thờ phượng buổi chiều ngày Sabat."
+            },
+            sabat_toi: {
+                tieuDe: "THỜ PHƯỢNG NGÀY SABAT - BUỔI TỐI",
+                mauTieuDe: "text-purple-700",
+                mauNut: "bg-purple-700",
+                b1: "Bước 1 (khoảng 19h20)",
+                b2TieuDe: "Bước 2 (đúng 19h30) Tuyên bố",
+                b2LoiDan: `“Đã đến giờ hẹn thờ phượng với Đức Chúa Trời rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi tối ngày Sabat ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`,
+                b4TieuDe: "Bước 4: Cầu nguyện thành tiếng để khai mạc cho lễ thờ phượng buổi tối",
+                b6LoiDan: "“Xin cho con được dâng lễ vật buổi tối Sa-bát (và lễ vật 1/10 – nếu có) bằng tấm lòng cảm tạ lên Cha Mẹ, Nguyện Xin ĐCT Cha Mẹ nhậm lấy lễ vật của con.”",
+                b8LoiDan: "“Xin cho con được cầu nguyện dâng hiến cho bàn thờ buổi tối Sabat chí thánh hôm nay”",
+                b10LoiDan: "“Xin cho con được kết thúc lễ thờ phượng buổi tối Sa-bát chí thánh hôm nay tại đây, con xin Cảm Tạ Đức Chúa Trời Cha Mẹ!”",
+                ketThuc: "Kết thúc thờ phượng buổi tối ngày Sabat."
             }
         };
 
         function chuyenBuoi(buoi) {
-            const btnMai = document.getElementById('btn-mai');
-            const btnToi = document.getElementById('btn-toi');
-            const btnT3ts = document.getElementById('btn-t3ts');
-            const btnSabat = document.getElementById('btn-sabat');
+            const cacNut = ['btn-t3ts', 'btn-sabat-sang', 'btn-sabat-chieu', 'btn-sabat-toi'];
+            const classMacDinh = "py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors";
             
-            const containerMaiToi = document.getElementById('container-mai-toi');
-            const containerT3ts = document.getElementById('container-t3ts');
-            const containerSabat = document.getElementById('container-sabat');
-
-            const classMacDinh = "flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-gray-200 text-gray-700 transition-colors";
-            btnMai.className = classMacDinh;
-            btnToi.className = classMacDinh;
-            btnT3ts.className = classMacDinh;
-            btnSabat.className = classMacDinh;
-
-            containerMaiToi.classList.add('hidden');
-            containerT3ts.classList.add('hidden');
-            containerSabat.classList.add('hidden');
-
-            Object.values(ytPlayers).forEach(player => {
-                if(player && typeof player.pauseVideo === 'function') {
-                    player.pauseVideo();
-                }
+            cacNut.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.className = classMacDinh;
             });
 
-            if (buoi === 'mai' || buoi === 'toi') {
-                containerMaiToi.classList.remove('hidden');
-                
-                document.getElementById('tieu-de-chinh').innerText = duLieu[buoi].tieuDeChinh;
-                document.getElementById('tieude-buoc-1').innerText = duLieu[buoi].gioBước1;
-                document.getElementById('tieude-buoc-2').innerText = duLieu[buoi].gioBước2;
-                document.getElementById('loi-dan-buoc-2').innerText = duLieu[buoi].loiDanBuoc2;
-                document.getElementById('loi-dan-buoc-8').innerText = duLieu[buoi].loiDanBuoc8;
+            const containerT3ts = document.getElementById('container-t3ts');
+            const containerSabat = document.getElementById('container-sabat');
+            if (containerT3ts) containerT3ts.classList.add('hidden');
+            if (containerSabat) containerSabat.classList.add('hidden');
 
-                if (buoi === 'mai') {
-                    btnMai.className = "flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-blue-600 text-white shadow-md transition-colors";
-                } else {
-                    btnToi.className = "flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-blue-900 text-white shadow-md transition-colors";
-                }
-            } else if (buoi === 't3ts') {
+            try {
+                Object.values(ytPlayers).forEach(player => {
+                    if (player && typeof player.pauseVideo === 'function') player.pauseVideo();
+                });
+            } catch (e) {}
+
+            document.querySelectorAll('audio').forEach(a => a.pause());
+            document.querySelectorAll('button[id^="btn-audio-"]').forEach(btn => {
+                btn.classList.remove('btn-pause');
+                btn.classList.add('btn-play');
+                const icon = btn.querySelector('.icon');
+                const text = btn.querySelector('.text');
+                if (icon) icon.innerText = "▶";
+                if (text) text.innerText = "Nhạc Cầu Nguyện Ngẫm Nghĩ";
+            });
+
+            if (buoi === 't3ts') {
                 containerT3ts.classList.remove('hidden');
-                btnT3ts.className = "flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-indigo-700 text-white shadow-md transition-colors";
-                
-                document.getElementById('loi-dan-buoc-2-t3').innerText = `“Đã đến giờ hẹn thờ phượng với ĐCT rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi tối thứ 3 tinh sạch và cũng là buổi tối tuần lễ cầu nguyện Lễ Lều Tạm ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`;
-            } else if (buoi === 'sabat') {
+                document.getElementById('btn-t3ts').className = "py-2.5 px-2 text-sm md:text-base font-bold rounded-lg bg-indigo-700 text-white shadow-md transition-colors";
+                document.getElementById('loi-dan-buoc-2-t3').innerText = `“Đã đến giờ hẹn thờ phượng với ĐCT rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi tối thứ 3 tinh sạch ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`;
+            } else if (duLieuSabat[buoi]) {
+                const data = duLieuSabat[buoi];
                 containerSabat.classList.remove('hidden');
-                btnSabat.className = "flex-1 py-2 px-1 text-[13px] md:text-lg font-bold rounded-lg bg-purple-700 text-white shadow-md transition-colors";
-                
-                document.getElementById('loi-dan-buoc-2-sabat').innerText = `“Đã đến giờ hẹn thờ phượng với Đức Chúa Trời rồi, từ bây giờ xin cho con được phép bắt đầu lễ thờ phượng buổi tối ngày Sabat và cũng là buổi tối tuần lễ cầu nguyện Lễ Lều Tạm ${chuoiNgay}. Thì giờ này, xin cho con được cầu nguyện ngẫm nghĩ lên ĐCT Cha Mẹ!”`;
+
+                const idNutMap = {
+                    sabat_sang: 'btn-sabat-sang',
+                    sabat_chieu: 'btn-sabat-chieu',
+                    sabat_toi: 'btn-sabat-toi'
+                };
+                document.getElementById(idNutMap[buoi]).className = `py-2.5 px-2 text-sm md:text-base font-bold rounded-lg ${data.mauNut} text-white shadow-md transition-colors`;
+
+                const elTieuDe = document.getElementById('sabat-tieu-de');
+                elTieuDe.innerText = data.tieuDe;
+                elTieuDe.className = `text-2xl md:text-3xl font-black text-center ${data.mauTieuDe} mb-8 mt-4 uppercase`;
+
+                document.getElementById('sabat-tieude-b1').innerText = data.b1;
+                document.getElementById('sabat-tieude-b2').innerText = data.b2TieuDe;
+                document.getElementById('sabat-loidan-b2').innerText = data.b2LoiDan;
+                document.getElementById('sabat-tieude-b4').innerText = data.b4TieuDe;
+                document.getElementById('sabat-loidan-b6').innerText = data.b6LoiDan;
+                document.getElementById('sabat-loidan-b8').innerText = data.b8LoiDan;
+                document.getElementById('sabat-loidan-b10').innerText = data.b10LoiDan;
+                document.getElementById('sabat-ketthuc').innerText = data.ketThuc;
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function khoiTaoUngDung() {
-            const gioHienTai = new Date().getHours();
-            const thuHienTai = new Date().getDay(); 
-            
-            if (thuHienTai === 6 && gioHienTai >= 12 && gioHienTai <= 23) {
-                chuyenBuoi('sabat'); 
-            } else if (thuHienTai === 2 && gioHienTai >= 12 && gioHienTai <= 23) {
-                chuyenBuoi('t3ts'); 
-            } else if (gioHienTai >= 12 && gioHienTai <= 23) {
-                chuyenBuoi('toi');
+            const now = new Date();
+            const thu = now.getDay();
+            const gio = now.getHours();
+
+            if (thu === 2) {
+                chuyenBuoi('t3ts');
+            } else if (thu === 6) {
+                if (gio < 12) {
+                    chuyenBuoi('sabat_sang');
+                } else if (gio < 17) {
+                    chuyenBuoi('sabat_chieu');
+                } else {
+                    chuyenBuoi('sabat_toi');
+                }
             } else {
-                chuyenBuoi('mai'); 
+                chuyenBuoi('t3ts');
             }
         }
 
@@ -659,23 +606,18 @@
 
             if (currentAudio.paused) {
                 allAudios.forEach(a => { if(a.id !== audioId) a.pause(); });
-                
-                Object.values(ytPlayers).forEach(player => {
-                    if(player && typeof player.pauseVideo === 'function') {
-                        player.pauseVideo();
-                    }
-                });
+                try {
+                    Object.values(ytPlayers).forEach(player => {
+                        if (player && typeof player.pauseVideo === 'function') player.pauseVideo();
+                    });
+                } catch (e) {}
 
                 allButtons.forEach(btn => {
                     if(btn.id !== buttonId) {
                         btn.classList.remove('btn-pause');
                         btn.classList.add('btn-play');
                         btn.querySelector('.icon').innerText = "▶";
-                        let originalText = "Nhạc Cầu Nguyện Ngẫm Nghĩ";
-                        if(btn.id.includes('-6')) {
-                            originalText = "Nhạc Cầu Nguyện Thống Thanh";
-                        }
-                        btn.querySelector('.text').innerText = originalText;
+                        btn.querySelector('.text').innerText = "Nhạc Cầu Nguyện Ngẫm Nghĩ";
                     }
                 });
 
@@ -689,13 +631,10 @@
                 currentButton.classList.remove('btn-pause');
                 currentButton.classList.add('btn-play');
                 iconSpan.innerText = "▶";
-                let originalText = "Nhạc Cầu Nguyện Ngẫm Nghĩ";
-                if(buttonId.includes('-6')) {
-                    originalText = "Nhạc Cầu Nguyện Thống Thanh";
-                }
-                textSpan.innerText = originalText;
+                textSpan.innerText = "Nhạc Cầu Nguyện Ngẫm Nghĩ";
             }
         }
     </script>
+    <script src="https://www.youtube.com/iframe_api" async></script>
 </body>
 </html>
